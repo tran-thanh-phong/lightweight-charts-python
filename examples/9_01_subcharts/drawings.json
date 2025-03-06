@@ -1,0 +1,24 @@
+{
+    "TSLA": [
+        {
+            "type": "TrendLine",
+            "points": [
+                {
+                    "time": 1685115000,
+                    "logical": 1699,
+                    "price": 194.46622073578595
+                },
+                {
+                    "time": 1685122800,
+                    "logical": 1725,
+                    "price": 199.8056856187291
+                }
+            ],
+            "options": {
+                "lineColor": "#1E80F0",
+                "lineStyle": 0,
+                "width": 4
+            }
+        }
+    ]
+}
