@@ -8,9 +8,6 @@ from webview.errors import JavascriptException
 from lightweight_charts import abstract
 from .util import parse_event_message, FLOAT
 
-import os
-import threading
-
 
 class CallbackAPI:
     def __init__(self, emit_queue):
@@ -86,8 +83,9 @@ class PyWV:
                         self.return_queue.put(window.evaluate_js(arg[14:]))
                     else:
                         try:
-                            with open("script.js", "w") as f:
-                                f.write(arg)
+                            # Uncomment these lines for debugging
+                            # with open("script.js", "w") as f:
+                            #    f.write(arg)
 
                             window.evaluate_js(arg)
 

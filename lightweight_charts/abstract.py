@@ -274,11 +274,8 @@ class SeriesCommon(Pane):
         self.run_script(f"{self.id}.series.update({js_data(series)})")
 
     def _update_markers(self):
-        self.run_script(
-            f"LightweightCharts.createSeriesMarkers({self.id}.series, {json.dumps(list(self.markers.values()))});"
-        )
+        self.run_script(f'{self.id}.seriesMarkers.setMarkers({json.dumps(list(self.markers.values()))})')
 
-        # f"{self.id}.series.setMarkers({json.dumps(list(self.markers.values()))})"
 
     def marker_list(self, markers: list):
         """
@@ -1044,23 +1041,11 @@ class AbstractChart(Candlestick, Pane):
         }})"""
         )
 
-    def watermark(
-        self, text: str, font_size: int = 44, color: str = "rgba(180, 180, 200, 0.5)"
-    ):
+    def watermark(self, text: str, font_size: int = 44, color: str = 'rgba(180, 180, 200, 0.5)'):
         """
         Adds a watermark to the chart.
         """
-        self.run_script(
-            f"""
-          {self.id}.chart.applyOptions({{
-              watermark: {{
-                  visible: true,
-                  horzAlign: 'center',
-                  vertAlign: 'center',
-                  ...{js_json(locals())}
-              }}
-          }})"""
-        )
+        self.run_script(f'''{self._chart.id}.createWatermark('{text}', {font_size}, '{color}')''')
 
     def legend(
         self,
@@ -1185,3 +1170,19 @@ class AbstractChart(Candlestick, Pane):
         args = locals()
         del args["self"]
         return self.win.create_subchart(*args.values())
+
+    def resize_pane(self, pane_index: int, height: int):
+        self.run_script(
+            f"""
+            if ({self.id}.chart.panes().length > {pane_index}) {{
+                {self.id}.chart.panes()[{pane_index}].setHeight({height});
+            }}
+        """
+        )
+
+    def remove_pane(self, pane_index: int):
+        self.run_script(
+            f"""
+                    {self.id}.chart.removePane({pane_index});
+            """
+        )

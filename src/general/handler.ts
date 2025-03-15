@@ -17,6 +17,8 @@ import {
   CandlestickSeries,
   HistogramSeries,
   LineSeries,
+  createTextWatermark,
+  createSeriesMarkers,
 } from "lightweight-charts";
 
 import { GlobalParams, globalParamInit } from "./global-params";
@@ -52,6 +54,8 @@ export class Handler {
   public spinner: HTMLDivElement | undefined;
 
   public _seriesList: ISeriesApi<SeriesType>[] = [];
+  public watermark: any;
+  public seriesMarkers: any;
 
   // TODO find a better solution rather than the 'position' parameter
   constructor(
@@ -82,6 +86,7 @@ export class Handler {
     this.chart = this._createChart();
     this.series = this.createCandlestickSeries(0);
     this.volumeSeries = this.createVolumeSeries(0);
+    this.seriesMarkers = createSeriesMarkers(this.series, []);
 
     this.legend = new Legend(this);
 
@@ -417,5 +422,29 @@ export class Handler {
     for (const [property, valueKey] of Object.entries(this._styleMap)) {
       rootStyle.setProperty(property, styles[valueKey]);
     }
+  }
+
+  createWatermark(text: string, fontSize: number, color: string) {
+    if (!this.watermark) {
+      this.watermark = createTextWatermark(this.chart.panes()[0], {
+        horzAlign: 'center',
+        vertAlign: 'center',
+        lines: [{
+          text: text,
+          color: color,
+          fontSize: fontSize,
+        }],
+      });
+
+      return;
+    }
+
+    this.watermark.applyOptions({
+      lines: [{
+        text: text,
+        color: color,
+        fontSize: fontSize,
+      }]
+    });
   }
 }
