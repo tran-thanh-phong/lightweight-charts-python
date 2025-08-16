@@ -30,7 +30,6 @@ class Drawing(Pane):
         for i in range(0, len(points), 2):
             formatted_points.append(make_js_point(self.chart, points[i], points[i + 1]))
         self.run_script(f'{self.id}.updatePoints({", ".join(formatted_points)})')
-        print(f'{self.id}.updatePoints({", ".join(formatted_points)})')
 
     def delete(self):
         """
