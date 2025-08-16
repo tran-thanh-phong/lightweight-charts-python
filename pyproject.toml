@@ -3,12 +3,11 @@ requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lightweight-charts-v5"
-version = "1.0.0"
+name = "lightweight-charts"
+version = "3.0"
 description = "Python framework for TradingView's Lightweight Charts JavaScript library (v5.x)."
 authors = [
-    { name = "louisnw", email = "louisnw@mail.com" },
-    { name = "Phong Tran", email = "tranthanhphong91@gmail.com" }
+    { name = "louisnw", email = "louisnw@mail.com" }
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
@@ -20,9 +19,9 @@ dependencies = [
 
 
 [project.urls]
-Homepage = "https://github.com/tran-thanh-phong/lightweight-charts-python"
-Repository = "https://github.com/tran-thanh-phong/lightweight-charts-python"
-Documentation = "https://github.com/tran-thanh-phong/lightweight-charts-python/blob/main/README.md"
+Homepage = "https://github.com/louisnw01/lightweight-charts-python"
+Repository = "https://github.com/louisnw01/lightweight-charts-python"
+Documentation = "https://github.com/louisnw01/lightweight-charts-python/blob/main/README.md"
 
 
 [tool.setuptools]
