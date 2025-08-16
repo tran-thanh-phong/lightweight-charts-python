@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="lightweight-charts",
-    version="3.0",
+    name="lightweight-charts-v5",
+    version="1.0.2",
     packages=find_packages(),
     python_requires=">=3.8",
     install_requires=[

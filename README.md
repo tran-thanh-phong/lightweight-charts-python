@@ -15,7 +15,7 @@ lightweight-charts-python aims to provide a simple and pythonic way to access an
 
 ## Installation
 ```
-pip install lightweight-charts
+pip install lightweight-charts-v5
 ```
 ___
 
